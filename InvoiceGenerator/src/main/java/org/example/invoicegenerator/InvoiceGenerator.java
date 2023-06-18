@@ -98,7 +98,7 @@ public class InvoiceGenerator {
         double vat = 0;
         double vatSum = 0;
 
-        writeMultipleTextHorizontal(new float[]{50, 70, 190, 230, 270, 300, 350, 400, 450}, page.getMediaBox().getHeight() - 250, contentStream, new String[]{"Lp.", "Nazwa towaru lub uslugi", "PKWiU", "Jm", "Ilosc", "Cena jedn.", "Wartosc netto", "Stawka VAT", "Kwota VAT"}, PDType1Font.TIMES_ROMAN, 8);
+        writeMultipleTextHorizontal(new float[]{50, 70, 190, 230, 270, 300, 340, 390, 440, 495}, page.getMediaBox().getHeight() - 250, contentStream, new String[]{"Lp.", "Nazwa towaru lub uslugi", "PKWiU", "Jm", "Ilosc", "Cena jedn.", "Wartosc netto", "Stawka VAT", "Kwota VAT", "Kwota brutto"}, PDType1Font.TIMES_ROMAN, 8);
         writeLine(1f, 50, page.getMediaBox().getWidth() - 50, page.getMediaBox().getHeight() - 260, contentStream);
 
         double sumOfIndividualVatSum = 0;
