@@ -11,20 +11,15 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
 
-record Product(String name, String pkwiu, UnitOfMeasure unitOfMeasure, double quantity, double pricePerUnit, double vat) {}
-record SellerInfo(String name, String street, String city, String postalCode, String NIP, String accountNumber, String phoneNumber) {}
-record BuyerInfo(String name, String street, String city, String postalCode, String NIP) {}
-record ReceiverInfo(String name, String street, String city, String postalCode) {}
-
 public class InvoiceGenerator {
     LocalDate issueDate;
     Long invoiceNumber;
     SellerInfo sellerInfo;
     BuyerInfo buyerInfo;
-    List<Product> products;
+    List<ProductGen> products;
     ReceiverInfo receiverInfo;
 
-    public InvoiceGenerator(LocalDate issueDate, Long invoiceNumber, SellerInfo sellerInfo, BuyerInfo buyerInfo, List<Product> products) {
+    public InvoiceGenerator(LocalDate issueDate, Long invoiceNumber, SellerInfo sellerInfo, BuyerInfo buyerInfo, List<ProductGen> products) {
         this.issueDate = issueDate;
         this.invoiceNumber = invoiceNumber;
         this.sellerInfo = sellerInfo;
@@ -32,7 +27,7 @@ public class InvoiceGenerator {
         this.products = products;
     }
 
-    public InvoiceGenerator(LocalDate issueDate, Long invoiceNumber, SellerInfo sellerInfo, BuyerInfo buyerInfo, ReceiverInfo receiverInfo, List<Product> products) {
+    public InvoiceGenerator(LocalDate issueDate, Long invoiceNumber, SellerInfo sellerInfo, BuyerInfo buyerInfo, ReceiverInfo receiverInfo, List<ProductGen> products) {
         this.issueDate = issueDate;
         this.invoiceNumber = invoiceNumber;
         this.sellerInfo = sellerInfo;
@@ -106,7 +101,7 @@ public class InvoiceGenerator {
         int productMargin = 270;
         double sumOfIndividualBruttoSum = 0;
         int productDisplayed = 0;
-        for (Product product : products) {
+        for (ProductGen product : products) {
 
             vat = product.vat();
             bruttoPrice = product.pricePerUnit();
