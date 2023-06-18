@@ -40,6 +40,10 @@ This class depends on the following external libraries:
 
 Please refer to the documentation of the `org.apache.pdfbox` library for more information on its usage and integration.
 
-[output2.pdf](https://github.com/Nistiah/InvoiceGenerator/files/11781814/output2.pdf)
+![image](https://github.com/Nistiah/InvoiceGenerator/assets/56507634/9855af8f-1544-4821-a8ab-b3b23c4adce5)
+
+[output.pdf](https://github.com/Nistiah/InvoiceGenerator/files/11781814/output2.pdf)
+
+
 
 *Note: The image above shows an example of the generated invoice. The actual appearance may vary based
