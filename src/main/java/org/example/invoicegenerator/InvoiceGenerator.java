@@ -11,11 +11,6 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
 
-record Product(String name, String pkwiu, UnitOfMeasure unitOfMeasure, double quantity, double pricePerUnit, double vat) {}
-record SellerInfo(String name, String street, String city, String postalCode, String NIP, String accountNumber, String phoneNumber) {}
-record BuyerInfo(String name, String street, String city, String postalCode, String NIP) {}
-record ReceiverInfo(String name, String street, String city, String postalCode) {}
-
 public class InvoiceGenerator {
     LocalDate issueDate;
     Long invoiceNumber;
