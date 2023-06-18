@@ -1,6 +1,6 @@
 # InvoiceGenerator
 
-This Java class `InvoiceGenerator` is part of the `org.example.invoicegenerator` package. It is responsible for generating an invoice in PDF format based on the provided data.
+This Java class `InvoiceGenerator` is part of the `org.example.invoicegenerator` package. It is responsible for generating an invoice in PDF format based on the provided data. For now it is designed to cater to the requirements of generating invoices in the Polish language and follows the Polish invoicing paradigm.
 
 ## Class Structure
 
