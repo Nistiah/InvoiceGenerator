@@ -58,13 +58,6 @@ public class InvoiceGenerator {
                 PDPage page = new PDPage(PDRectangle.A4);
                 document.addPage(page);
                 PDPageContentStream contentStream = new PDPageContentStream(document, page);
-//                float margin = 50;
-//                float tableWidth = page.getMediaBox().getWidth() - 2 * margin;
-//                float yStart = page.getMediaBox().getHeight() - margin;
-//                float yPosition = yStart;
-//                float tableHeight = 100f;
-//                float cellMargin = 10f;
-
                 //Numer faktury
                 contentStream.setFont(PDType1Font.HELVETICA_BOLD, 20);
                 contentStream.beginText();
@@ -94,11 +87,7 @@ public class InvoiceGenerator {
                 contentStream.endText();
 
                 //Linia pod nagłówkiem
-                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 8);
-                contentStream.setLineWidth(1f);
-                contentStream.moveTo(50, page.getMediaBox().getHeight() - 100);
-                contentStream.lineTo(page.getMediaBox().getWidth() - 50, page.getMediaBox().getHeight() - 100);
-                contentStream.stroke();
+                writeLine(1f, 50, page.getMediaBox().getWidth() - 50, page.getMediaBox().getHeight() - 100,  contentStream);
 
 
                 //Sprzedawca
@@ -225,13 +214,10 @@ public class InvoiceGenerator {
                 contentStream.endText();
 
 
+                int productMargin = 260;
 
-                contentStream.setLineWidth(1f);
-                contentStream.moveTo(50, page.getMediaBox().getHeight() - 260);
-                contentStream.lineTo(page.getMediaBox().getWidth() - 50, page.getMediaBox().getHeight() - 260);
-                contentStream.stroke();
-
-                int productMargin = 270;
+                writeLine(1f, 50, page.getMediaBox().getWidth() - 50, page.getMediaBox().getHeight() - productMargin,  contentStream);
+                productMargin += 10;
 
                 double bruttoPrice = 0;
                 double nettoPrice = 0;
@@ -307,11 +293,7 @@ public class InvoiceGenerator {
                     productDisplayed++;
                 }
 
-                contentStream.setLineWidth(1f);
-                contentStream.moveTo(50, page.getMediaBox().getHeight() - productMargin);
-                contentStream.lineTo(page.getMediaBox().getWidth() - 50, page.getMediaBox().getHeight() - productMargin);
-                contentStream.stroke();
-
+                writeLine(1f, 50, page.getMediaBox().getWidth() - 50, page.getMediaBox().getHeight() - productMargin,  contentStream);
                 productMargin+=20;
 
                 contentStream.setFont(PDType1Font.HELVETICA_BOLD, 8);
@@ -330,11 +312,7 @@ public class InvoiceGenerator {
 
                 productMargin+=10;
 
-                contentStream.setLineWidth(1f);
-                contentStream.moveTo(370, page.getMediaBox().getHeight() - productMargin);
-                contentStream.lineTo(page.getMediaBox().getWidth() - 50, page.getMediaBox().getHeight() - productMargin);
-                contentStream.stroke();
-
+                writeLine(1f, 370, page.getMediaBox().getWidth() - 50, page.getMediaBox().getHeight() - productMargin,  contentStream);
                 productMargin+=10;
 
                 contentStream.setFont(PDType1Font.HELVETICA_BOLD, 8);
@@ -381,4 +359,17 @@ public class InvoiceGenerator {
             e.printStackTrace();
         }
     }
-}
+
+    public void writeLine(float lineWidtg, float fromX, float toX, float y, PDPageContentStream contentStream) throws IOException {
+        contentStream.setFont(PDType1Font.HELVETICA_BOLD, 8);
+        contentStream.setLineWidth(lineWidtg);
+        contentStream.moveTo(fromX, y);
+        contentStream.lineTo(toX, y);
+        contentStream.stroke();
+    }
+
+
+
+    }
+
+
